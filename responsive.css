@@ -1,0 +1,25 @@
+@media screen and (min-width: 59em) {
+  .btn-mobile-nav {
+    display: none;
+  }
+  .main-nav {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+    background: none;
+    height: auto;
+    justify-content: flex-end;
+  }
+
+  .nav__links {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav__link:link,
+  .nav__link:visited {
+    font-size: 1.7rem;
+  }
+}

@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" type="image/png" href="img/icon.png" />
-
+    <script
+      src="https://kit.fontawesome.com/638734e9fe.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <title>Front | Empowering Teams</title>
     <script defer src="script.js"></script>
   </head>
   <body>
-    <header class="header" id="home">
-      <nav class="nav">
+    <div id="home"></div>
+    <header class="header">
+      <a href="#home">
         <img src="img/logo.png" alt="Front logo" class="nav__logo" id="logo" />
+      </a>
+      <nav class="main-nav">
         <ul class="nav__links">
           <li class="nav__item">
             <a class="nav__link" href="#home">Home</a>
@@ -38,24 +45,24 @@
           </li>
         </ul>
       </nav>
-
-      <div class="header__title">
-        <h1>
-          Empowering
-          <!-- Green highlight effect -->
-          <span class="highlight">teams</span>
-          with<br />
-          <span class="highlight">freedom</span>
-        </h1>
-        <h4>Own the unlimited power of web development</h4>
-        <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
-        <img
-          src="img/hero.png"
-          class="header__img"
-          alt="Minimalist bank items"
-        />
-      </div>
+      <button class="btn-mobile-nav">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </header>
+
+    <div class="hero-section">
+      <h1>
+        Empowering
+        <!-- Green highlight effect -->
+        <span class="highlight">teams</span>
+        with<br />
+        <span class="highlight">freedom</span>
+      </h1>
+      <h4>Own the unlimited power of web development</h4>
+      <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+      <img src="img/hero.png" class="header__img" alt="client logos" />
+    </div>
 
     <section class="section" id="section--1">
       <div class="section__title">
@@ -68,7 +75,7 @@
       <div class="features">
         <img
           src="img/digital-lazy.jpg"
-          data-src="img/digital.jpg"
+          data-src="img/responsive.png"
           alt="Computer"
           class="features__img lazy-img"
         />
@@ -99,7 +106,7 @@
         </div>
         <img
           src="img/grow-lazy.jpg"
-          data-src="img/grow.jpg"
+          data-src="img/customizable.png"
           alt="Plant"
           class="features__img lazy-img"
         />

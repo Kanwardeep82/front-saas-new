@@ -20,6 +20,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
@@ -28,6 +29,7 @@ body {
   color: #444;
   line-height: 1.9;
   background-color: #f3f3f3;
+  overflow-x: hidden;
 }
 
 /* GENERAL ELEMENTS */
@@ -112,33 +114,93 @@ img {
 }
 
 /* NAVIGATION */
-.nav {
+
+/* nav and sticky class at the same time */
+.header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 9rem;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+.main-nav {
+  background: rgba(255, 255, 255, 0.97);
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 0 6rem;
+  height: 100vh;
   z-index: 100;
+  transform: translateX(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in;
+
+  opacity: 0; /* Hide visually */
+  pointer-events: none; /* Unaccessible to mouse & keyboard */
+  visibility: hidden; /* Hide it from screen readers */
 }
 
-/* nav and sticky class at the same time */
-.nav.sticky {
+.nav-open .main-nav {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Mobile Nav */
+.btn-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 100;
+}
+.fa-solid {
+  color: #333;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 4.8rem;
+}
+
+.nav-open .fa-bars {
+  display: none;
+}
+.fa-xmark {
+  display: none;
+}
+.nav-open .fa-xmark {
+  display: block;
+}
+
+/* Sticky NAV */
+.sticky {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.95);
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(255, 255, 255, 0.97);
+  z-index: 999;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
   transition-duration: 0.5s;
   transition-timing-function: ease-in;
 }
 
 .nav__logo {
-  height: 12rem;
+  height: 10rem;
   transition: all 0.3s;
 }
 
 .nav__links {
+  list-style: none;
   display: flex;
   align-items: center;
-  list-style: none;
+  gap: 4.8rem;
+  flex-direction: column;
 }
 
 .nav__item {
@@ -147,7 +209,7 @@ img {
 
 .nav__link:link,
 .nav__link:visited {
-  font-size: 1.7rem;
+  font-size: 3rem;
   font-weight: 400;
   color: inherit;
   text-decoration: none;
@@ -171,15 +233,8 @@ img {
 }
 
 /* HEADER */
-.header {
-  padding: 0 3rem;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.header__title {
+.hero-section {
   flex: 1;
 
   max-width: 115rem;
@@ -191,6 +246,7 @@ img {
 
   align-items: start;
   justify-items: start;
+  padding: 4.8rem 3rem 9.6rem 4rem;
 }
 
 h1 {
@@ -231,6 +287,7 @@ h4 {
 /* FEATURES */
 .features {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   margin: 0 12rem;
@@ -580,9 +637,11 @@ h4 {
 /* MODAL WINDOW */
 .modal {
   position: fixed;
-  top: 50%;
+  overflow-y: auto;
+  max-height: 90vh;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -5%);
   max-width: 60rem;
   background-color: #f3f3f3;
   padding: 5rem 6rem;
@@ -593,6 +652,7 @@ h4 {
 
 .overlay {
   position: fixed;
+  background-attachment: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -605,7 +665,7 @@ h4 {
 
 .modal__header {
   font-size: 3.25rem;
-  margin-bottom: 4.5rem;
+  margin: 0 3rem 3.5rem;
   line-height: 1.5;
 }
 
@@ -617,7 +677,10 @@ h4 {
   gap: 2.5rem;
 }
 
-.modal__form label {
+.modal__form label,
+.budget,
+.country,
+.needs {
   font-size: 1.7rem;
   font-weight: 500;
 }
@@ -650,6 +713,16 @@ h4 {
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+.needs,
+.accept-terms {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.accept-terms .accept {
+  font-size: 1.1rem;
 }
 
 /* COOKIE MESSAGE */

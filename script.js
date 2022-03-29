@@ -10,11 +10,24 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
-const nav = document.querySelector('.nav');
+const nav = document.querySelector('.main-nav');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
+
+const header = document.querySelector('.header');
+const heroSection = document.querySelector('.hero-section');
 /////////////////////////////////////////
+//Mobile Navigation
+const btnNav = document.querySelector('.btn-mobile-nav');
+btnNav.addEventListener('click', function () {
+  header.classList.toggle('nav-open');
+  if (header.classList.contains('nav-open')) {
+    // document.body.style.overflowY = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
+  }
+});
+
 //Modal Window
 const openModal = function (e) {
   e.preventDefault();
@@ -39,33 +52,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 //Button scrolling
-// btnScrollTo.addEventListener('click', function (e) {
-//   // const s1coords = section1.getBoundingClientRect();
-//   // window.scrollTo(
-//   //   s1coords.left + window.scrollX,
-//   //   s1coords.top + window.scrollY
-//   // );
-//   // window.scrollTo({
-//   //   left: s1coords.left + window.scrollX,
-//   //   top: s1coords.top + window.scrollY,
-//   //   behavior: 'smooth',
-//   // });
-
-//   section1.scrollIntoView({ behavior: 'smooth' });
-// });
-//Page Navigation
-
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
-//1. Add event listener to common parent element.
-//2. Determine what element originated the event
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
@@ -74,6 +60,8 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     const id = e.target.getAttribute('href');
     if (id === '#') return;
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    header.classList.remove('nav-open');
+    document.documentElement.style.overflowY = 'auto';
   }
 });
 
@@ -104,8 +92,8 @@ tabsContainer.addEventListener('click', function (e) {
 const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
+    const siblings = link.closest('.main-nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.header').querySelector('img');
 
     siblings.forEach(el => {
       if (el !== link) el.style.opacity = this;
@@ -120,19 +108,22 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 //////////////////////////////////
 //sticky navigation
 
-const header = document.querySelector('.header');
-const navHeight = nav.getBoundingClientRect().height;
+const headerHeight = header.getBoundingClientRect().height;
+const headerWidth = header.getBoundingClientRect().width;
+console.log(headerHeight);
+console.log(headerWidth);
+
 const stickyNav = function (entries) {
   const [entry] = entries;
-  if (!entry.isIntersecting) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
+  if (!entry.isIntersecting) header.classList.add('sticky');
+  else header.classList.remove('sticky');
 };
-const headerObserver = new IntersectionObserver(stickyNav, {
+const heroObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: `-${navHeight}px`,
+  rootMargin: `-${headerHeight}px`,
 });
-headerObserver.observe(header);
+heroObserver.observe(heroSection);
 
 //Reveal Sections
 const allSections = document.querySelectorAll('.section');
