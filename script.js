@@ -110,8 +110,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 const headerHeight = header.getBoundingClientRect().height;
 const headerWidth = header.getBoundingClientRect().width;
-console.log(headerHeight);
-console.log(headerWidth);
 
 const stickyNav = function (entries) {
   const [entry] = entries;
@@ -140,7 +138,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(section => {
   sectionObserver.observe(section);
-  // section.classList.add('section--hidden');
+  section.classList.add('section--hidden');
 });
 
 //Lazy Loading images

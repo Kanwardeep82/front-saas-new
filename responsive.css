@@ -22,4 +22,27 @@
   .nav__link:visited {
     font-size: 1.7rem;
   }
+  .hero-section {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    row-gap: 3rem;
+    align-content: center;
+    justify-content: center;
+    align-items: start;
+    justify-items: start;
+  }
+
+  .header__img {
+    grid-column: 2 / 3;
+    grid-row: 1 / span 4;
+    width: 100%;
+  }
+
+  .features {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 0 12rem;
+  }
 }
