@@ -637,7 +637,7 @@ h4 {
   position: fixed;
   overflow-y: auto;
   max-height: 90vh;
-  top: 10%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -5%);
   max-width: 60rem;
