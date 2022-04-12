@@ -182,6 +182,7 @@ img {
   top: 0;
   bottom: 0;
   width: 100%;
+  max-width: none;
   height: 8rem;
   padding-top: 0;
   padding-bottom: 0;
