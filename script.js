@@ -14,8 +14,10 @@ const nav = document.querySelector('.main-nav');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
+const opsContainer = document.querySelector('.operations');
 
 const header = document.querySelector('.header');
+const headerContainer = document.querySelector('.header-container');
 const heroSection = document.querySelector('.hero-section');
 /////////////////////////////////////////
 //Mobile Navigation
@@ -74,8 +76,7 @@ document
   });
 
 //Tabbed components
-
-tabsContainer.addEventListener('click', function (e) {
+const tabFn = function (e) {
   const clicked = e.target.closest('.operations__tab');
   if (!clicked) return;
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
@@ -86,6 +87,14 @@ tabsContainer.addEventListener('click', function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
+};
+
+tabsContainer.addEventListener('click', function (e) {
+  tabFn(e);
+});
+
+opsContainer.addEventListener('click', function (e) {
+  tabFn(e);
 });
 
 //Menu fade animation
@@ -113,8 +122,8 @@ const headerWidth = header.getBoundingClientRect().width;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  if (!entry.isIntersecting) header.classList.add('sticky');
-  else header.classList.remove('sticky');
+  if (!entry.isIntersecting) headerContainer.classList.add('sticky');
+  else headerContainer.classList.remove('sticky');
 };
 const heroObserver = new IntersectionObserver(stickyNav, {
   root: null,

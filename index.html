@@ -20,35 +20,42 @@
   </head>
   <body>
     <div id="home"></div>
-    <header class="header">
-      <a href="#home">
-        <img src="img/logo.png" alt="Front logo" class="nav__logo" id="logo" />
-      </a>
-      <nav class="main-nav">
-        <ul class="nav__links">
-          <li class="nav__item">
-            <a class="nav__link" href="#home">Home</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#section--1">Features</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#section--2">Why Front</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#section--3">Testimonials</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link nav__link--btn btn--show-modal" href="#"
-              >Buy Now</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <button class="btn-mobile-nav">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+    <header class="header-container">
+      <div class="header">
+        <a href="#home">
+          <img
+            src="img/logo.png"
+            alt="Front logo"
+            class="nav__logo"
+            id="logo"
+          />
+        </a>
+        <nav class="main-nav">
+          <ul class="nav__links">
+            <li class="nav__item">
+              <a class="nav__link" href="#home">Home</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#section--1">Features</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#section--2">Why Front</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#section--3">Testimonials</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link nav__link--btn btn--show-modal" href="#"
+                >Buy Now</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button class="btn-mobile-nav">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
     </header>
 
     <div class="hero-section">
@@ -158,6 +165,12 @@
             <span>03</span>Cancel Anytime
           </button>
         </div>
+        <button
+          class="btn operations__tab operations__tab--1 operations__tab--active inner-tabs"
+          data-tab="1"
+        >
+          <span>01</span>Hundreds of Components
+        </button>
         <div
           class="operations__content operations__content--1 operations__content--active"
         >
@@ -177,7 +190,12 @@
             aliquip ex ea commodo consequat.
           </p>
         </div>
-
+        <button
+          class="btn operations__tab operations__tab--2 inner-tabs"
+          data-tab="2"
+        >
+          <span>02</span>Images Included
+        </button>
         <div class="operations__content operations__content--2">
           <div class="operations__icon operations__icon--2">
             <svg>
@@ -194,6 +212,12 @@
             anim id est laborum.
           </p>
         </div>
+        <button
+          class="btn operations__tab operations__tab--3 inner-tabs"
+          data-tab="3"
+        >
+          <span>03</span>Cancel Anytime
+        </button>
         <div class="operations__content operations__content--3">
           <div class="operations__icon operations__icon--3">
             <svg>
