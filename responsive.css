@@ -1,5 +1,16 @@
 @media screen and (min-width: 44em) {
   /* Tabs - Operations */
+
+  .features {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 0 auto;
+    max-width: 120rem;
+    padding: 0 3em;
+  }
+
   .operations__content {
     padding: 2.5rem 7rem 6.5rem 7rem;
   }
@@ -31,6 +42,19 @@
 
   .inner-tabs {
     display: none;
+  }
+
+  /* Modal */
+  .modal__form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .needs,
+  .accept-terms {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 }
 
@@ -70,30 +94,18 @@
 
   .header__img {
     grid-column: 2 / 3;
-    grid-row: 1 / span 4;
     width: 100%;
   }
 
-  .features {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin: 0 auto;
-    max-width: 120rem;
-    padding: 0 3em;
+  .operations {
+    margin: 12rem auto 0 auto;
   }
 
-  /* Modal */
-  .modal__form {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-    gap: 2.5rem;
+  .footer {
+    padding: 10em 3em;
   }
-  .needs,
-  .accept-terms {
-    grid-column: span 2;
-    grid-row: span 2;
+
+  .footer__nav {
+    margin-bottom: 8em;
   }
 }

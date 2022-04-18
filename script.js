@@ -27,7 +27,7 @@ btnNav.addEventListener('click', function () {
   if (header.classList.contains('nav-open')) {
     // document.body.style.overflowY = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
-  }
+  } else document.documentElement.style.overflowY = 'auto';
 });
 
 //Modal Window
