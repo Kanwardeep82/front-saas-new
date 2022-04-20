@@ -1,4 +1,21 @@
 @media screen and (min-width: 44em) {
+  .slider__btn {
+    height: 5.5rem;
+    width: 5.5rem;
+    font-size: 3.25rem;
+  }
+
+  .testimonial__text {
+    margin-bottom: 3.5em;
+  }
+
+  .testimonial::before {
+    top: -5.7rem;
+    left: -6.8rem;
+  }
+  .btn--close-modal {
+    right: 0.4em;
+  }
   /* Tabs - Operations */
 
   .features {
@@ -49,12 +66,12 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
   .needs,
   .accept-terms {
     grid-column: span 2;
-    grid-row: span 2;
+    margin: 0.5em auto;
   }
 }
 
@@ -86,10 +103,7 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
     row-gap: 3rem;
-    align-content: center;
-    justify-content: center;
     align-items: start;
-    justify-items: start;
   }
 
   .header__img {
