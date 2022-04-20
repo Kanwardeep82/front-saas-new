@@ -21,6 +21,8 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-margin-top: 6rem;
 }
 
 body {
@@ -75,6 +77,7 @@ body {
   border-radius: 10rem;
   cursor: pointer;
   transition: all 0.3s;
+  color: black;
 }
 
 .btn:hover {
@@ -371,8 +374,6 @@ h4 {
 
 .operations__content {
   display: none;
-
-  /* JUST PRESENTATIONAL */
   font-size: clamp(1.4rem, 2vw, 1.7rem);
   padding: 2em;
 }

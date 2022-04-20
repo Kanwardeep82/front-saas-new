@@ -53,28 +53,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-//Button scrolling
-
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
-  //Matching Strategy
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    if (id === '#') return;
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    header.classList.remove('nav-open');
-    document.documentElement.style.overflowY = 'auto';
-  }
-});
-
-document
-  .querySelector('.btn--scroll-to')
-  .addEventListener('click', function () {
-    document
-      .querySelector('#section--1')
-      .scrollIntoView({ behavior: 'smooth' });
-  });
-
 //Tabbed components
 const tabFn = function (e) {
   const clicked = e.target.closest('.operations__tab');
@@ -118,7 +96,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 //sticky navigation
 
 const headerHeight = header.getBoundingClientRect().height;
-const headerWidth = header.getBoundingClientRect().width;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
@@ -131,6 +108,32 @@ const heroObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${headerHeight}px`,
 });
 heroObserver.observe(heroSection);
+
+//Button scrolling
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   e.preventDefault();
+//   //Matching Strategy
+//   if (e.target.classList.contains('nav__link')) {
+//     const id = e.target.getAttribute('href');
+//     if (id === '#') return;
+//     if (!headerContainer.classList.contains('sticky')) {
+//       document.querySelector('html').style.scrollPaddingTop = '40px';
+//       console.log('test');
+//     }
+//     document.querySelector(id).scrollIntoView(true);
+//     header.classList.remove('nav-open');
+//     document.documentElement.style.overflowY = 'auto';
+//   }
+// });
+
+document
+  .querySelector('.btn--scroll-to')
+  .addEventListener('click', function () {
+    document
+      .querySelector('#section--1')
+      .scrollIntoView({ behavior: 'smooth' });
+  });
 
 //Reveal Sections
 const allSections = document.querySelectorAll('.section');
