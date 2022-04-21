@@ -120,7 +120,11 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
     if (id === '#') return;
-    document.querySelector(id).scrollIntoView(true);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    if (document.querySelector(id).classList.contains('section--hidden')) {
+      let scrolledY = window.scrollY;
+      window.scroll(0, scrolledY - 0.9 * headerHeight);
+    }
     header.classList.remove('nav-open');
     document.documentElement.style.overflowY = 'auto';
   }
@@ -140,10 +144,6 @@ const revealSection = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
   entry.target.classList.remove('section--hidden');
-  if (headerContainer.classList.contains('sticky')) {
-    let scrolledY = window.scrollY;
-    window.scroll(0, scrolledY - 0.9 * headerHeight);
-  }
   observer.unobserve(entry.target);
 };
 const sectionObserver = new IntersectionObserver(revealSection, {
