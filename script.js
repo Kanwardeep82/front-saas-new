@@ -101,14 +101,14 @@ const stickyNav = function (entries) {
   const [entry] = entries;
   if (!entry.isIntersecting) {
     headerContainer.classList.add('sticky');
-    let scrolledY = window.scrollY;
-    window.scroll(0, scrolledY - headerHeight);
+    // let scrolledY = window.scrollY;
+    // window.scroll(0, scrolledY - headerHeight);
   } else headerContainer.classList.remove('sticky');
 };
 const heroObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: `-${headerHeight}px`,
+  rootMargin: `-${1.2 * headerHeight}px`,
 });
 heroObserver.observe(heroSection);
 
@@ -120,10 +120,14 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
     if (id === '#') return;
+    headerContainer.classList.add('sticky');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    if (document.querySelector(id).classList.contains('section--hidden')) {
+    if (
+      document.querySelector(id).classList.contains('section--hidden') ||
+      !headerContainer.classList.contains('sticky')
+    ) {
       let scrolledY = window.scrollY;
-      window.scroll(0, scrolledY - 0.9 * headerHeight);
+      window.scroll(0, scrolledY - headerHeight);
     }
     header.classList.remove('nav-open');
     document.documentElement.style.overflowY = 'auto';
@@ -133,6 +137,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document
   .querySelector('.btn--scroll-to')
   .addEventListener('click', function () {
+    headerContainer.classList.add('sticky');
     document
       .querySelector('#section--1')
       .scrollIntoView({ behavior: 'smooth' });
