@@ -142,7 +142,7 @@ const revealSection = function (entries, observer) {
   entry.target.classList.remove('section--hidden');
   if (headerContainer.classList.contains('sticky')) {
     let scrolledY = window.scrollY;
-    window.scroll(0, scrolledY - headerHeight + 10);
+    window.scroll(0, scrolledY - 0.9 * headerHeight);
   }
   observer.unobserve(entry.target);
 };
