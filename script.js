@@ -99,8 +99,11 @@ const headerHeight = header.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  if (!entry.isIntersecting) headerContainer.classList.add('sticky');
-  else headerContainer.classList.remove('sticky');
+  if (!entry.isIntersecting) {
+    headerContainer.classList.add('sticky');
+    let scrolledY = window.scrollY;
+    window.scroll(0, scrolledY - headerHeight);
+  } else headerContainer.classList.remove('sticky');
 };
 const heroObserver = new IntersectionObserver(stickyNav, {
   root: null,
@@ -111,21 +114,17 @@ heroObserver.observe(heroSection);
 
 //Button scrolling
 
-// document.querySelector('.nav__links').addEventListener('click', function (e) {
-//   e.preventDefault();
-//   //Matching Strategy
-//   if (e.target.classList.contains('nav__link')) {
-//     const id = e.target.getAttribute('href');
-//     if (id === '#') return;
-//     if (!headerContainer.classList.contains('sticky')) {
-//       document.querySelector('html').style.scrollPaddingTop = '40px';
-//       console.log('test');
-//     }
-//     document.querySelector(id).scrollIntoView(true);
-//     header.classList.remove('nav-open');
-//     document.documentElement.style.overflowY = 'auto';
-//   }
-// });
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  //Matching Strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    if (id === '#') return;
+    document.querySelector(id).scrollIntoView(true);
+    header.classList.remove('nav-open');
+    document.documentElement.style.overflowY = 'auto';
+  }
+});
 
 document
   .querySelector('.btn--scroll-to')
@@ -141,6 +140,10 @@ const revealSection = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
   entry.target.classList.remove('section--hidden');
+  if (headerContainer.classList.contains('sticky')) {
+    let scrolledY = window.scrollY;
+    window.scroll(0, scrolledY - headerHeight + 10);
+  }
   observer.unobserve(entry.target);
 };
 const sectionObserver = new IntersectionObserver(revealSection, {
