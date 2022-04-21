@@ -136,6 +136,14 @@ document
     document
       .querySelector('#section--1')
       .scrollIntoView({ behavior: 'smooth' });
+    if (
+      document
+        .querySelector('#section--1')
+        .classList.contains('section--hidden')
+    ) {
+      let scrolledY = window.scrollY;
+      window.scroll(0, scrolledY - 0.9 * headerHeight);
+    }
   });
 
 //Reveal Sections
